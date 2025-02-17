@@ -71,6 +71,9 @@ def main():
             print("2. Pause (p)")
             print("3. Finish trip (f)")
 
+            if taximeter.state == 'paused':
+                print("4. Resume (r, only when paused)")
+
             action = input("\nChoose an option: ").strip().lower()
 
             if action == 'm' and taximeter.state == 'stationary':
@@ -80,6 +83,8 @@ def main():
             elif action == 'f':
                 taximeter.finish_trip()
                 break
+            elif action == 'r' and taximeter.state == 'paused':
+                taximeter.resume_trip()
             else:
                 print("Invalid option. Please choose from the options.")
 
